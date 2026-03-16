@@ -1,24 +1,23 @@
-name: PR Security Checks
+name: Dependency Security Check
 
 on:
   pull_request:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
 
-  dependency-check:
+  dependency-review:
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout Code
+      - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Check Dependencies for Vulnerabilities
+      - name: Dependency Review
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: critical
